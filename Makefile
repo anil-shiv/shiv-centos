@@ -5,6 +5,6 @@ include ${MAKE_COMMON}/common.mk
 
 $(TARGET)/makefile-common : 
 		@echo "Downloading jenkins war file"
-		cp -r ${MAKE_COMMON} $(TARGET)
+		cp -r ${MAKE_COMMON} $(TARGET)/makefile-common
 		
 prepare : $(TARGET)/makefile-common
