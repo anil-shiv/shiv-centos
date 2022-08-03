@@ -40,3 +40,5 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3.9 -m pip install --user ansible
 
 COPY target/makefile-common /opt/makefile-common/
+
+RUN yum install make -y
