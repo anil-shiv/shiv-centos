@@ -39,4 +39,4 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3.9 get-pip.py --user &&\
     python3.9 -m pip install --user ansible
 
-COPY ../makefile-common /opt/
+COPY target/makefile-common /opt/
