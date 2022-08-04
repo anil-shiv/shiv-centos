@@ -42,3 +42,15 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
 COPY target/makefile-common /opt/makefile-common/
 
 RUN yum install make -y
+
+ARG JENKINS_USER=jenkins
+ARG JENKINS_UID=1033
+ARG JENKINS_GROUP=${JENKINS_USER}
+
+RUN echo "${JENKINS_USER}----${JENKINS_USER}"
+
+RUN adduser ${JENKINS_USER} -u ${JENKINS_UID} && \
+        chown -R ${JENKINS_USER}:${JENKINS_GROUP} /dist && \
+        echo "${JENKINS_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${JENKINS_USER} && \
+        chmod 0440 /etc/sudoers.d/${JENKINS_USER} 
+USER ${JENKINS_USER} 
